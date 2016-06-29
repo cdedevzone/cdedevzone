@@ -16,3 +16,7 @@ hs_err_pid*
 
 # War Folder
 war
+
+# Endpoint generated libs
+endpoint-libs
+target
