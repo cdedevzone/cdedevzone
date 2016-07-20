@@ -1,0 +1,133 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://cdesandbox.appspot.com/_ah/api",
+  "name" : "items",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://cdesandbox.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "items.get" : {
+      "path" : "get",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "907200373731-ebvcb49t7h7vo30vs8qe1rkcbfp7qvju.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.helloendpoints.ItemAPI.getItems",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "items.add" : {
+      "path" : "add/{title}/{description}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "907200373731-ebvcb49t7h7vo30vs8qe1rkcbfp7qvju.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.helloendpoints.ItemAPI.addItem",
+      "request" : {
+        "parameters" : {
+          "title" : {
+            "type" : "string",
+            "required" : true
+          },
+          "description" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "items.prout" : {
+      "path" : "prout",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "907200373731-ebvcb49t7h7vo30vs8qe1rkcbfp7qvju.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.helloendpoints.ItemAPI.proutItems",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Item" : {
+        "id" : "Item",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ItemCollection" : {
+        "id" : "ItemCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Item"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.example.helloendpoints.ItemAPI.getItems" : {
+        "response" : {
+          "$ref" : "ItemCollection"
+        }
+      },
+      "com.example.helloendpoints.ItemAPI.addItem" : {
+        "response" : {
+          "$ref" : "Item"
+        }
+      },
+      "com.example.helloendpoints.ItemAPI.proutItems" : {
+        "response" : {
+          "$ref" : "ItemCollection"
+        }
+      }
+    }
+  }
+}
